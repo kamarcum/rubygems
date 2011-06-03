@@ -153,6 +153,10 @@ module Gem::InstallUpdateOptions
                 "meet version requirements") do |value, options|
       options[:minimal_deps] = true
     end
+    add_option(:"Install/Update", "--stfu",
+                "Make the warnings stop") do |value, options|
+      Kernel.module_eval("def warn(*args);end")
+    end
   end
 
   ##
